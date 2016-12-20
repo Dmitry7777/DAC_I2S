@@ -1,29 +1,11 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+/*
+This firmware operates with any digital-to-analog converters
+ */
+ 
+ #define DAC_I2S_H
+ #ifndef DAC_I2S_H
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+ #include"Arduino.h"
+ #include"DAC_I2S.h"
+ 
+ 
