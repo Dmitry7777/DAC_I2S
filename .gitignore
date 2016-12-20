@@ -14,9 +14,9 @@ I2S input format: time multiplexed, two's complement, TTL.
  
   #if
   
- #define DAC_I2S_DATA //
- #define DAC_I2S_BCK //
- #define DAC_I2S_WS //
+#define DAC_I2S_DATA // The structure defines the data input
+#define DAC_I2S_WS // The structure defines the word select input
+#define DAC_I2S_BCK // The structure defines the bit clock input
  
  
  public I2S
