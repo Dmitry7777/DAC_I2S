@@ -12,7 +12,7 @@ I2S input format: time multiplexed, two's complement, TTL.
  #include"Arduino.h"
  #include"DAC_I2S.h"
  
-  #if
+  #endif
   
 #define DAC_I2S_DATA // The structure defines the data input
 #define DAC_I2S_WS // The structure defines the word select input
