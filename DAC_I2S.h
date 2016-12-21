@@ -19,7 +19,7 @@ I2S input format: time multiplexed, two's complement, TTL.
 #define DAC_I2S_BCK // The structure defines the bit clock input
  
  
- public I2S
+ public: I2S
 
 
 //It operates with the left canal
