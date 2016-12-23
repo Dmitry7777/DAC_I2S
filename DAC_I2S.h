@@ -16,7 +16,7 @@ I2S input format: time multiplexed, two's complement, TTL.
 
 
 //Digital input port of the digital-to-analog converter
-#define DAC_I2S_INPUT
+#define DAC_I2S_INPUT //
 
 //Digital input pins of the digital-to-analog converter
 #define DAC_I2S_DATA // The structure defines the data input
@@ -28,21 +28,21 @@ I2S input format: time multiplexed, two's complement, TTL.
 
 
 //It operates with the left canal
-#define LEFT_OUTPUT_LATCH
-#define LEFT_BIT_SWITCHES
-#define LEFT_INPUT_LATCH
-#define LEFT_5_BIT_PASSIVE_DIVIDER
-#define LEFT_11_BIT_PASSIVE_DIVIDER
-#define LEFT_CURRENT_SOURCE
+#define LEFT_OUTPUT_LATCH //
+#define LEFT_BIT_SWITCHES //
+#define LEFT_INPUT_LATCH //
+#define LEFT_5_BIT_PASSIVE_DIVIDER //
+#define LEFT_11_BIT_PASSIVE_DIVIDER //
+#define LEFT_CURRENT_SOURCE //
 
 //It operates with the right canal
-#define RIGHT_OUTPUT_LATCH
-#define RIGHT_BIT_SWITCHES
-#define RIGHT_INPUT_LATCH
-#define RIGHT_5_BIT_PASSIVE_DIVIDER
-#define RIGHT_11_BIT_PASSIVE_DIVIDER
-#define RIGHT_CURRENT_SOURCE
+#define RIGHT_OUTPUT_LATCH //
+#define RIGHT_BIT_SWITCHES //
+#define RIGHT_INPUT_LATCH //
+#define RIGHT_5_BIT_PASSIVE_DIVIDER //
+#define RIGHT_11_BIT_PASSIVE_DIVIDER //
+#define RIGHT_CURRENT_SOURCE //
 
-#define ADDRESS_POINTER
+#define ADDRESS_POINTER //
  
- #endif
+ #endif //
