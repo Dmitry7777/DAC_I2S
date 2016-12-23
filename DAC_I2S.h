@@ -13,7 +13,12 @@ I2S input format: time multiplexed, two's complement, TTL.
  #include"DAC_I2S.h"
  
   #endif
-  
+
+
+//Digital input port of the digital-to-analog converter
+#define DAC_I2S_INPUT
+
+//Digital input pins of the digital-to-analog converter
 #define DAC_I2S_DATA // The structure defines the data input
 #define DAC_I2S_WS // The structure defines the word select input
 #define DAC_I2S_BCK // The structure defines the bit clock input
