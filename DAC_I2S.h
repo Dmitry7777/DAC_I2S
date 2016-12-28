@@ -43,7 +43,8 @@ I2S input format: time multiplexed, two's complement, TTL.
 #define ADDRESS_POINTER //
 
 class DAC_I2S{
-void begin(); //
+ public:
+void begin(uint16_t period); //
 void end(); //
 void beginTransaction(); //
 void endTransaction (); //
@@ -56,9 +57,13 @@ void previous(); //
 void volumeUp(); //
 void volumeLow(); //
 void defaultVolume(); //
-void setClockDivider(); //
-void setDataMode(); //
-void setWordSelect(); //
+void setClockDivider(); //This function sets the clock frequency input pin which connects to the microcontroller or microprocessor
+void setDataMode(); //This function sets the data input pin which connects to the microcontroller or microprocessor
+void setWordSelect(); //This function sets the word select input pin which connects to the microcontroller or microprocessor
+void setFrequencyClock(); //This function sets clock frequencies
+void setFrequencyWord(); //This function sets frequencies in the word select input
 }
+
+extern DAC_I2S_class;
  
  #endif //
