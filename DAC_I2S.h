@@ -21,10 +21,7 @@ I2S input format: time multiplexed, two's complement, TTL.
 //Digital input pins of the digital-to-analog converter
 #define DAC_I2S_DATA // The structure defines the data input
 #define DAC_I2S_WS // The structure defines the word select input
-#define DAC_I2S_BCK // The structure defines the bit clock input
- 
- 
- public: I2S
+#define DAC_I2S_BCK 0x01// The structure defines the bit clock input
 
 
 //It operates with the left canal
@@ -44,5 +41,24 @@ I2S input format: time multiplexed, two's complement, TTL.
 #define RIGHT_CURRENT_SOURCE //
 
 #define ADDRESS_POINTER //
+
+class DAC_I2S{
+void begin(); //
+void end(); //
+void beginTransaction(); //
+void endTransaction (); //
+void init(); //
+void stop(); //
+void play(); //
+void pause(); //
+void forward(); //
+void previous(); //
+void volumeUp(); //
+void volumeLow(); //
+void defaultVolume(); //
+void setClockDivider(); //
+void setDataMode(); //
+void setWordSelect(); //
+}
  
  #endif //
