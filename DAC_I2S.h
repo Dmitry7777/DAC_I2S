@@ -50,15 +50,15 @@ void begin(uint16_t period); //
 void end(); //
 void beginTransaction(); //
 void endTransaction (); //
-void init(); //
-void stop(); //
-void play(); //
-void pause(); //
-void forward(); //
-void previous(); //
-void volumeUp(); //
-void volumeLow(); //
-void defaultVolume(); //
+void init(); //This function initializes signals of the digital-to-analog converter
+void stop(); //This function stops the playback
+void play(); //This function plays the playback
+void pause(); //This function pauses the playback
+void forward(); //This function sets the forward track of audio file
+void previous(); //This function sets the previous track of audio file
+void volumeUp(); //This function sets the up volume of sound
+void volumeLow(); //This function sets the low volume of sound
+void defaultVolume(); //This function sets the default volume
 void setClockDivider(); //This function sets the clock frequency input pin which connects to the microcontroller or microprocessor
 void setDataMode(); //This function sets the data input pin which connects to the microcontroller or microprocessor
 void setWordSelect(); //This function sets the word select input pin which connects to the microcontroller or microprocessor
