@@ -6,13 +6,14 @@ This firmware operates with any digital-to-analog converters
 I2S input format: time multiplexed, two's complement, TTL.
  */
  
- #define DAC_I2S_H
- #ifndef DAC_I2S_H
+ #define DAC_I2S_H //
+ #ifndef DAC_I2S_H //
 
- #include"Arduino.h"
- #include"DAC_I2S.h"
+#include<Arduino.h> //
+#include<DAC_I2S.h> //
+#include"Arduino.h" //
+#include"DAC_I2S.h" //
  
-  #endif
 
 
 //Digital input port of the digital-to-analog converter
@@ -44,6 +45,7 @@ I2S input format: time multiplexed, two's complement, TTL.
 
 class DAC_I2S{
  public:
+ //
 void begin(uint16_t period); //
 void end(); //
 void beginTransaction(); //
@@ -62,6 +64,13 @@ void setDataMode(); //This function sets the data input pin which connects to th
 void setWordSelect(); //This function sets the word select input pin which connects to the microcontroller or microprocessor
 void setFrequencyClock(); //This function sets clock frequencies
 void setFrequencyWord(); //This function sets frequencies in the word select input
+ 
+ private:
+ //
+ 
+ protected:
+ //
+ 
 }
 
 extern DAC_I2S_class;
