@@ -73,6 +73,8 @@ void setFrequencyWord(); //This function sets frequencies in the word select inp
  
 }
 
-extern DAC_I2S_class;
+extern DAC_I2S_class DAC_I2S_DATA;
+extern DAC_I2S_class DAC_I2S_WS;
+extern DAC_I2S_class DAC_I2S_BCK;
  
  #endif //
