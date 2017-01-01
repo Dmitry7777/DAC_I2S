@@ -61,12 +61,13 @@ void volumeLow(); //This function sets the low volume of sound
 void defaultVolume(); //This function sets the default volume
 void setClockDivider(); //This function sets the clock frequency input pin which connects to the microcontroller or microprocessor
 void setDataMode(); //This function sets the data input pin which connects to the microcontroller or microprocessor
-void setWordSelect(); //This function sets the word select input pin which connects to the microcontroller or microprocessor
-void setFrequencyClock(); //This function sets clock frequencies
-void setFrequencyWord(); //This function sets frequencies in the word select input
+void setFrequencyInput(); //
  
  private:
  //
+void setFrequencyClock(); //This function sets clock frequencies
+void setFrequencyWord(); //This function sets frequencies in the word select input
+void setWordSelect(); //This function sets the word select input pin which connects to the microcontroller or microprocessor
  
  protected:
  //
