@@ -46,7 +46,8 @@ I2S input format: time multiplexed, two's complement, TTL.
 class DAC_I2S{
  public:
  //
-void begin(uint16_t period); //
+void begin(uint8_t clk, void (*fptr)( _I2S_SAMPLE_T *pBuf )); //
+void begin(uint8_t clk, void (*fptr)( _I2S_SAMPLE_T *pBuf, uint16_t numSamples )); //
 void end(); //
 void beginTransaction(); //
 void endTransaction (); //
@@ -65,6 +66,11 @@ void setFrequencyInput(); //
  
  private:
  //
+ uint16_t DAC_I2S_DATA
+ uint16_t DAC_I2S_WS
+ uint16_t DAC_I2S_BCK
+ volatile bool DAC
+bool DAC_BUFFER_A
 void setFrequencyClock(); //This function sets clock frequencies
 void setFrequencyWord(); //This function sets frequencies in the word select input
 void setWordSelect(); //This function sets the word select input pin which connects to the microcontroller or microprocessor
