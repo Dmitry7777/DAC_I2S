@@ -71,6 +71,7 @@ void setFrequencyInput(); //
  uint16_t DAC_I2S_BCK
  volatile bool DAC
 bool DAC_BUFFER_A
+void balance(); //
 void setFrequencyClock(); //This function sets clock frequencies
 void setFrequencyWord(); //This function sets frequencies in the word select input
 void setWordSelect(); //This function sets the word select input pin which connects to the microcontroller or microprocessor
