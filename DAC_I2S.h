@@ -46,6 +46,9 @@ I2S input format: time multiplexed, two's complement, TTL.
 class DAC_I2S{
  public:
  //
+ DAC(uint16_t DATA, uint16_t WS, uint16_t BCK); //
+ DAC(uint16_t MOSI, uint16_t MISO, uint16_t SS, uint16_t SCK); //
+ 
 void begin(uint8_t clk, void (*fptr)( _I2S_SAMPLE_T *pBuf )); //
 void begin(uint8_t clk, void (*fptr)( _I2S_SAMPLE_T *pBuf, uint16_t numSamples )); //
 void end(); //
