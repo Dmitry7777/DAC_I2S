@@ -5,7 +5,7 @@ Interface: I2S
 This firmware operates with any digital-to-analog converters
 I2S input format: time multiplexed, two's complement, TTL.
  */
- 
+
  #define DAC_I2S_H //
  #ifndef DAC_I2S_H //
 
@@ -13,7 +13,7 @@ I2S input format: time multiplexed, two's complement, TTL.
 #include<DAC_I2S.h> //
 #include"Arduino.h" //
 #include"DAC_I2S.h" //
- 
+
 
 
 //Digital input port of the digital-to-analog converter
@@ -46,9 +46,9 @@ I2S input format: time multiplexed, two's complement, TTL.
 class DAC_I2S{
  public:
  //
- DAC(uint16_t DATA, uint16_t WS, uint16_t BCK); //
- DAC(uint16_t MOSI, uint16_t MISO, uint16_t SS, uint16_t SCK); //
- 
+ DAC_I2S(uint16_t DAC_I2S_DATA, uint16_t DAC_I2S_WS, uint16_t DAC_I2S_BCK); //
+ DAC_I2S(uint16_t DAC_I2S_MOSI, uint16_t DAC_I2S_MISO, uint16_t DAC_I2S_SS, uint16_t DAC_I2S_SCK); //
+
 void begin(uint8_t clk, void (*fptr)( _I2S_SAMPLE_T *pBuf )); //
 void begin(uint8_t clk, void (*fptr)( _I2S_SAMPLE_T *pBuf, uint16_t numSamples )); //
 void end(); //
@@ -66,7 +66,7 @@ void defaultVolume(); //This function sets the default volume
 void setClockDivider(); //This function sets the clock frequency input pin which connects to the microcontroller or microprocessor
 void setDataMode(); //This function sets the data input pin which connects to the microcontroller or microprocessor
 void setFrequencyInput(); //
- 
+
  private:
  //
  uint16_t DAC_I2S_DATA
@@ -78,14 +78,14 @@ void balance(); //
 void setFrequencyClock(); //This function sets clock frequencies
 void setFrequencyWord(); //This function sets frequencies in the word select input
 void setWordSelect(); //This function sets the word select input pin which connects to the microcontroller or microprocessor
- 
+
  protected:
  //
- 
+
 }
 
 extern DAC_I2S_class DAC_I2S_DATA;
 extern DAC_I2S_class DAC_I2S_WS;
 extern DAC_I2S_class DAC_I2S_BCK;
- 
+
  #endif //
