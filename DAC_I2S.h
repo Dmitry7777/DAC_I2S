@@ -18,10 +18,10 @@ Notes to the characteristics:
 6. At this point tHD; DAT = 0 ns, this value has been fixed on 2 ns due to tolerances.
  */
 
-
 #define DAC_I2S_H //
 #ifndef DAC_I2S_H //
- 
+
+
 #include<Arduino.h> //
 #include<DAC_I2S.h> //
 #include<SPI.h> //
@@ -69,6 +69,7 @@ Notes to the characteristics:
 #define DAC_I2S_SET_FREQUENCY_MIN_WORD_SELLECT_INPUT 0x31
 #define DAC_I2S_SET_NORMAL_FREQUENCY_BIT_CLOCK_INPUT 0x32
 
+uint8_t x = 0000h;
 uint8_t max = 10000;
 uint8_t min = 1000;
 
@@ -94,9 +95,10 @@ word transmittingData(uint8_t DAC_I2S_DATA)
 
  private:
  //
- uint16_t DAC_I2S_DATA; //
- uint16_t DAC_I2S_WS; //
- uint16_t DAC_I2S_BCK; //
+uint16_t DAC_I2S_BCK; //
+uint16_t DAC_I2S_WS; //
+uint16_t DAC_I2S_DATA; //
+ 
  volatile bool DAC; //
 bool DAC_BUFFER_A; //
 void balance(); //
