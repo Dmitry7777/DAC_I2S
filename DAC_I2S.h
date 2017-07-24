@@ -6,24 +6,23 @@ This firmware operates with any digital-to-analog converters
 I2S input format: time multiplexed, two's complement, TTL.
  */
 
- #define DAC_I2S_H //
- #ifndef DAC_I2S_H //
 
+#define DAC_I2S_H //
+#ifndef DAC_I2S_H //
+ 
 #include<Arduino.h> //
 #include<DAC_I2S.h> //
+#include<SPI.h> //
 #include"Arduino.h" //
 #include"DAC_I2S.h" //
-
-
 
 //Digital input port of the digital-to-analog converter
 #define DAC_I2S_INPUT //
 
 //Digital input pins of the digital-to-analog converter
-#define DAC_I2S_DATA // The structure defines the data input
-#define DAC_I2S_WS // The structure defines the word select input
-#define DAC_I2S_BCK 0x01// The structure defines the bit clock input
-
+#define DAC_I2S_BCK 0// The structure defines the bit clock input
+#define DAC_I2S_WS  1// The structure defines the word select input
+#define DAC_I2S_DATA  2// The structure defines the data input
 
 //It operates with the left canal
 #define LEFT_OUTPUT_LATCH //
@@ -43,29 +42,38 @@ I2S input format: time multiplexed, two's complement, TTL.
 
 #define ADDRESS_POINTER //
 
-class DAC_I2S{
+#define DAC_I2S_BEGIN 0x00
+#define DAC_I2S_END 0xFF
+#define DAC_I2S_TRANSACTION 0x01
+#define DAC_I2S_INITIALIZE 0x02
+#define DAC_I2S_CONVERT 0x04
+#define DAC_I2S_MAX_VOLUME 0x08
+#define DAC_I2S_MIN_VOLUME 0x10
+#define DAC_I2S_LEFT_CHANNEL 0x12
+#define DAC_I2S_RIGHT_CHANNEL 0x14
+#define DAC_I2S_SET_DATA_INPUT 0x18
+#define DAC_I2S_SET_FREQUENCY_MAX_WORD_SELLECT_INPUT 0x30
+#define DAC_I2S_SET_FREQUENCY_MIN_WORD_SELLECT_INPUT 0x31
+#define DAC_I2S_SET_NORMAL_FREQUENCY_BIT_CLOCK_INPUT 0x32
+
+class DAC_I2S: public print{
  public:
  //
- DAC_I2S(uint16_t DAC_I2S_DATA, uint16_t DAC_I2S_WS, uint16_t DAC_I2S_BCK); //
- DAC_I2S(uint16_t DAC_I2S_MOSI, uint16_t DAC_I2S_MISO, uint16_t DAC_I2S_SS, uint16_t DAC_I2S_SCK); //
+DAC_I2S(uint8_t DAC_I2S_BCK, uint8_t DAC_I2S_WS, uint8_t DAC_I2S_DATA); //
+DAC_I2S(uint8_t DAC_I2S_MOSI, uint8_t DAC_I2S_MISO, uint8_t DAC_I2S_SS, uint8_t DAC_I2S_SCK); //
 
-void begin(uint8_t clk, void (*fptr)( _I2S_SAMPLE_T *pBuf )); //
-void begin(uint8_t clk, void (*fptr)( _I2S_SAMPLE_T *pBuf, uint16_t numSamples )); //
+void begin(uint8_t x); //
 void end(); //
-void beginTransaction(); //
-void endTransaction (); //
 void init(); //This function initializes signals of the digital-to-analog converter
-void stop(); //This function stops the playback
-void play(); //This function plays the playback
-void pause(); //This function pauses the playback
-void forward(); //This function sets the forward track of audio file
-void previous(); //This function sets the previous track of audio file
-void volumeUp(); //This function sets the up volume of sound
-void volumeLow(); //This function sets the low volume of sound
-void defaultVolume(); //This function sets the default volume
-void setClockDivider(); //This function sets the clock frequency input pin which connects to the microcontroller or microprocessor
-void setDataMode(); //This function sets the data input pin which connects to the microcontroller or microprocessor
-void setFrequencyInput(); //
+void convert(); //
+void maxVolume(); //
+void minVolume(); //
+void leftChannel(); //
+void rightChannel(); //
+void setDataMode(); //
+void setFrequMax(uint8_t max); //
+void setFrequMin(uint8_t min); //
+void normalFrequ(bool FREQU); //
 
  private:
  //
@@ -80,8 +88,14 @@ void setFrequencyWord(); //This function sets frequencies in the word select inp
 void setWordSelect(); //This function sets the word select input pin which connects to the microcontroller or microprocessor
 
  protected:
- //
+ uint8_t DAC_I2S_DATA, DAC_I2S_WS, DAC_I2S_BCK//
 
+}
+
+struct DAC_I2S(){
+int DAC_I2S_DATA;
+int DAC_I2S_WS;
+int DAC_I2S_BCK;
 }
 
 extern DAC_I2S_class DAC_I2S_DATA;
