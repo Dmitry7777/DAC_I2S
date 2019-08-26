@@ -83,6 +83,9 @@ DAC_I2S(uint16_t BCK, uint16_t WS, uint16_t DATA){
 PROCESS_DAC_I2S_BCK = BCK;
 PROCESS_DAC_I2S_WS = WS;
 PROCESS_DAC_I2S_DATA = DATA;
+ pinMode(PROCESS_DAC_I2S_BCK, IO_DAC_I2S_BCK); //
+ pinMode(PROCESS_DAC_I2S_WS, IO_DAC_I2S_WS); //
+ pinMode(PROCESS_DAC_I2S_DATA, IO_DAC_I2S_DATA); //
 }; //
 DAC_I2S(uint16_t DAC_I2S_MOSI, uint16_t DAC_I2S_MISO, uint16_t DAC_I2S_SS, uint16_t DAC_I2S_SCK); //
 
@@ -129,7 +132,7 @@ void setWordSelect(); //This function sets the word select input pin which conne
  protected:
 uint16_t DAC_I2S_DATA, uint16_t DAC_I2S_WS, uint16_t DAC_I2S_BCK//
 
-}
+};
 
 struct DAC_I2S(){
 int DAC_I2S_DATA;
