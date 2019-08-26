@@ -4,11 +4,9 @@ Project: for digital-to-analog converters
 Interface: I2S
 This firmware operates with any digital-to-analog converters
 I2S input format: time multiplexed, two's complement, TTL.
-
 DAC_I2S_DATA - transmission of data input from microcontroller to digital-to-analog converter at velocity of frequency at 9,2Mb/sec
 DAC_I2S_WS -  transmission of word-select input from microcontroller to digital-to-analog at frequency at 1kHz-192kHz
 DAC_I2S_BCK -  transmission of  bit-clock frequency input from microcontroller to digital-to-analog at bit-clock frequency at 9,2MHz
-
 Notes to the characteristics:
 1. Measured at IAOL = 0 mA and IAOR = 0 mA (code 8000H) and Ibias = 0 mA.
 2. Vripple = 1% of supply voltage and fripple = 100 Hz.
@@ -22,11 +20,6 @@ Notes to the characteristics:
 #define DAC_I2S_H //
 
 #include<Arduino.h> //
-#include<DAC_I2S.h> //
-#include<SPI.h> //
-#include<I2S.h>
-#include"Arduino.h" //
-#include"DAC_I2S.h" //
 
 //Digital input port of the digital-to-analog converter
 #define DAC_I2S_INPUT //
@@ -72,13 +65,13 @@ uint16_t PROCESS_DAC_I2S_BCK;
 uint16_t PROCESS_DAC_I2S_WS;
 uint16_t PROCESS_DAC_I2S_DATA;
 
-uint8_t x = 0000h;
+uint8_t x = 0x0000;
 uint8_t max = 10000;
 uint8_t min = 1000;
 
-class DAC_I2S: public print{
+class DAC_I2S
+{
  public:
- //
 DAC_I2S(uint16_t BCK, uint16_t WS, uint16_t DATA){
 PROCESS_DAC_I2S_BCK = BCK;
 PROCESS_DAC_I2S_WS = WS;
@@ -130,18 +123,7 @@ void setFrequencyWord(); //This function sets frequencies in the word select inp
 void setWordSelect(); //This function sets the word select input pin which connects to the microcontroller or microprocessor
 
  protected:
-uint16_t DAC_I2S_DATA, uint16_t DAC_I2S_WS, uint16_t DAC_I2S_BCK//
 
 };
-
-struct DAC_I2S(){
-int DAC_I2S_DATA;
-int DAC_I2S_WS;
-int DAC_I2S_BCK;
-}
-
-extern DAC_I2S_class DAC_I2S_DATA;
-extern DAC_I2S_class DAC_I2S_WS;
-extern DAC_I2S_class DAC_I2S_BCK;
 
  #endif //
