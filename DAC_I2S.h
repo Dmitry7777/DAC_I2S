@@ -32,9 +32,9 @@ Notes to the characteristics:
 #define DAC_I2S_INPUT //
 
 //Digital input pins of the digital-to-analog converter
-#define DAC_I2S_BCK 0// The structure defines the bit clock input
-#define DAC_I2S_WS  1// The structure defines the word select input
-#define DAC_I2S_DATA  2// The structure defines the data input
+#define IO_DAC_I2S_BCK OUTPUT// The structure defines the bit clock input
+#define IO_DAC_I2S_WS OUTPUT// The structure defines the word select input
+#define IO_DAC_I2S_DATA OUTPUT// The structure defines the data input
 
 //It operates with the left canal
 #define LEFT_OUTPUT_LATCH //
@@ -68,6 +68,10 @@ Notes to the characteristics:
 #define DAC_I2S_SET_FREQUENCY_MIN_WORD_SELLECT_INPUT 0x31
 #define DAC_I2S_SET_NORMAL_FREQUENCY_BIT_CLOCK_INPUT 0x32
 
+uint16_t PROCESS_DAC_I2S_BCK;
+uint16_t PROCESS_DAC_I2S_WS;
+uint16_t PROCESS_DAC_I2S_DATA;
+
 uint8_t x = 0000h;
 uint8_t max = 10000;
 uint8_t min = 1000;
@@ -75,7 +79,11 @@ uint8_t min = 1000;
 class DAC_I2S: public print{
  public:
  //
-DAC_I2S(uint16_t DAC_I2S_BCK, uint16_t DAC_I2S_WS, uint16_t DAC_I2S_DATA); //
+DAC_I2S(uint16_t BCK, uint16_t WS, uint16_t DATA){
+PROCESS_DAC_I2S_BCK = BCK;
+PROCESS_DAC_I2S_WS = WS;
+PROCESS_DAC_I2S_DATA = DATA;
+}; //
 DAC_I2S(uint16_t DAC_I2S_MOSI, uint16_t DAC_I2S_MISO, uint16_t DAC_I2S_SS, uint16_t DAC_I2S_SCK); //
 
 void begin(uint8_t x){
