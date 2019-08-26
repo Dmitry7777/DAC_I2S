@@ -63,9 +63,152 @@ uint16_t PROCESS_DAC_I2S_BCK;
 uint16_t PROCESS_DAC_I2S_WS;
 uint16_t PROCESS_DAC_I2S_DATA;
 
+int _Busy;
+int _CycleState;
+int _StepState;
+int LeftChannelValue;
+int RightChannelValue;
 
-class TDA1543A
-{
+int PerformSetup(){
+  switch(_StepState){
+    case 0:
+    digitalWrite(PROCESS_DAC_I2S_DATA, LeftChannelValue & bit(16)?HIGH:LOW); //
+    break;
+
+    case 1:
+    digitalWrite(PROCESS_DAC_I2S_DATA, LeftChannelValue & bit(15)?HIGH:LOW); //
+    break;
+
+    case 2:
+    digitalWrite(PROCESS_DAC_I2S_DATA, LeftChannelValue & bit(14)?HIGH:LOW); //
+    break;
+
+    case 3:
+    digitalWrite(PROCESS_DAC_I2S_DATA, LeftChannelValue & bit(13)?HIGH:LOW); //
+    break;
+
+    case 4:
+    digitalWrite(PROCESS_DAC_I2S_DATA, LeftChannelValue & bit(12)?HIGH:LOW); //
+    break;
+
+    case 5:
+    digitalWrite(PROCESS_DAC_I2S_DATA, LeftChannelValue & bit(11)?HIGH:LOW); //
+    break;
+
+    case 6:
+    digitalWrite(PROCESS_DAC_I2S_DATA, LeftChannelValue & bit(10)?HIGH:LOW); //
+    break;
+
+    case 7:
+    digitalWrite(PROCESS_DAC_I2S_DATA, LeftChannelValue & bit(9)?HIGH:LOW); //
+    break;
+
+    case 8:
+    digitalWrite(PROCESS_DAC_I2S_DATA, LeftChannelValue & bit(8)?HIGH:LOW); //
+    break;
+
+    case 9:
+    digitalWrite(PROCESS_DAC_I2S_DATA, LeftChannelValue & bit(7)?HIGH:LOW); //
+    break;
+
+    case 10:
+    digitalWrite(PROCESS_DAC_I2S_DATA, LeftChannelValue & bit(6)?HIGH:LOW); //
+    break;
+
+    case 11:
+    digitalWrite(PROCESS_DAC_I2S_DATA, LeftChannelValue & bit(5)?HIGH:LOW); //
+    break;
+
+    case 12:
+    digitalWrite(PROCESS_DAC_I2S_DATA, LeftChannelValue & bit(4)?HIGH:LOW); //
+    break;
+
+    case 13:
+    digitalWrite(PROCESS_DAC_I2S_DATA, LeftChannelValue & bit(3)?HIGH:LOW); //
+    break;
+
+    case 14:
+    digitalWrite(PROCESS_DAC_I2S_DATA, LeftChannelValue & bit(2)?HIGH:LOW); //
+    break;
+
+    case 15:
+    digitalWrite(PROCESS_DAC_I2S_DATA, LeftChannelValue & bit(1)?HIGH:LOW); //
+    break;
+    digitalWrite(PROCESS_DAC_I2S_WS, HIGH); //
+
+    case 16:
+    digitalWrite(PROCESS_DAC_I2S_DATA, RightChannelValue & bit(16)?HIGH:LOW); //
+    break;
+
+    case 17:
+    digitalWrite(PROCESS_DAC_I2S_DATA, RightChannelValue & bit(15)?HIGH:LOW); //
+    break;
+
+    case 18:
+    digitalWrite(PROCESS_DAC_I2S_DATA, RightChannelValue & bit(14)?HIGH:LOW); //
+    break;
+
+    case 19:
+    digitalWrite(PROCESS_DAC_I2S_DATA, RightChannelValue & bit(13)?HIGH:LOW); //
+    break;
+
+    case 20:
+    digitalWrite(PROCESS_DAC_I2S_DATA, RightChannelValue & bit(12)?HIGH:LOW); //
+    break;
+
+    case 21:
+    digitalWrite(PROCESS_DAC_I2S_DATA, RightChannelValue & bit(11)?HIGH:LOW); //
+    break;
+
+    case 22:
+    digitalWrite(PROCESS_DAC_I2S_DATA, RightChannelValue & bit(10)?HIGH:LOW); //
+    break;
+
+    case 23:
+    digitalWrite(PROCESS_DAC_I2S_DATA, RightChannelValue & bit(9)?HIGH:LOW); //
+    break;
+
+    case 24:
+    digitalWrite(PROCESS_DAC_I2S_DATA, RightChannelValue & bit(8)?HIGH:LOW); //
+    break;
+
+    case 25:
+    digitalWrite(PROCESS_DAC_I2S_DATA, RightChannelValue & bit(7)?HIGH:LOW); //
+    break;
+
+    case 26:
+    digitalWrite(PROCESS_DAC_I2S_DATA, RightChannelValue & bit(6)?HIGH:LOW); //
+    break;
+
+    case 27:
+    digitalWrite(PROCESS_DAC_I2S_DATA, RightChannelValue & bit(5)?HIGH:LOW); //
+    break;
+
+    case 28:
+    digitalWrite(PROCESS_DAC_I2S_DATA, RightChannelValue & bit(4)?HIGH:LOW); //
+    break;
+
+    case 29:
+    digitalWrite(PROCESS_DAC_I2S_DATA, RightChannelValue & bit(3)?HIGH:LOW); //
+    break;
+
+    case 30:
+    digitalWrite(PROCESS_DAC_I2S_DATA, RightChannelValue & bit(2)?HIGH:LOW); //
+    break;
+
+    case 31:
+    digitalWrite(PROCESS_DAC_I2S_DATA, RightChannelValue & bit(1)?HIGH:LOW); //
+    break;
+    digitalWrite(PROCESS_DAC_I2S_WS, LOW); //
+
+  };
+}
+
+
+class TDA1543A{
+
+static TDA1543A *SYS_Instance;
+
  public:
 TDA1543A(uint16_t BCK, uint16_t WS, uint16_t DATA){
 PROCESS_DAC_I2S_BCK = BCK;
@@ -74,6 +217,9 @@ PROCESS_DAC_I2S_DATA = DATA;
  pinMode(PROCESS_DAC_I2S_BCK, IO_MCU_BCK); //
  pinMode(PROCESS_DAC_I2S_WS, IO_MCU_WS); //
  pinMode(PROCESS_DAC_I2S_DATA, IO_MCU_DATA); //
+ digitalWrite(_DAC_I2S_BCK, LOW); //
+ digitalWrite(_DAC_I2S_WS, LOW); //
+ digitalWrite(_DAC_I2S_DATA, LOW); //
 }; //
 void begin(){
 }; //
@@ -87,9 +233,9 @@ void maxVolume(){
 }; //
 void minVolume(){
 }; //
-void leftChannel(){
+void leftChannel(int L){
 }; //
-void rightChannel(){
+void rightChannel(int R){
 }; //
 void setDataMode(){
 }; //
