@@ -18,9 +18,8 @@ Notes to the characteristics:
 6. At this point tHD; DAT = 0 ns, this value has been fixed on 2 ns due to tolerances.
  */
 
-#define DAC_I2S_H //
 #ifndef DAC_I2S_H //
-
+#define DAC_I2S_H //
 
 #include<Arduino.h> //
 #include<DAC_I2S.h> //
@@ -79,19 +78,32 @@ class DAC_I2S: public print{
 DAC_I2S(uint16_t DAC_I2S_BCK, uint16_t DAC_I2S_WS, uint16_t DAC_I2S_DATA); //
 DAC_I2S(uint16_t DAC_I2S_MOSI, uint16_t DAC_I2S_MISO, uint16_t DAC_I2S_SS, uint16_t DAC_I2S_SCK); //
 
-void begin(uint8_t x); //
-void end(); //
-void init(); //This function initializes signals of the digital-to-analog converter
-void convert(); //
-void maxVolume(); //
-void minVolume(); //
-void leftChannel(); //
-void rightChannel(); //
-void setDataMode(); //
-void setFrequMax(uint8_t max); //
-void setFrequMin(uint8_t min); //
-void normalFrequ(bool FREQU); //
-word transmittingData(uint8_t DAC_I2S_DATA)
+void begin(uint8_t x){
+}; //
+void end(){
+}; //
+void init(){
+}; //This function initializes signals of the digital-to-analog converter
+void convert(){
+}; //
+void maxVolume(){
+}; //
+void minVolume(){
+}; //
+void leftChannel(){
+}; //
+void rightChannel(){
+}; //
+void setDataMode(){
+}; //
+void setFrequMax(uint8_t max){
+}; //
+void setFrequMin(uint8_t min){
+}; //
+void normalFrequ(bool FREQU){
+}; //
+word transmittingData(uint8_t DAC_I2S_DATA){
+};
 
  private:
  //
