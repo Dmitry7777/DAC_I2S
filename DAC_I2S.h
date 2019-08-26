@@ -21,15 +21,7 @@ Notes to the characteristics:
 
 #include<Arduino.h> //
 
-//Digital input port of the digital-to-analog converter
-#define DAC_I2S_INPUT //
-
-//Digital input pins of the digital-to-analog converter
-#define IO_DAC_I2S_BCK OUTPUT// The structure defines the bit clock input
-#define IO_DAC_I2S_WS OUTPUT// The structure defines the word select input
-#define IO_DAC_I2S_DATA OUTPUT// The structure defines the data input
-
-//It operates with the left canal
+/*It operates with the left canal*/
 #define LEFT_OUTPUT_LATCH //
 #define LEFT_BIT_SWITCHES //
 #define LEFT_INPUT_LATCH //
@@ -61,34 +53,35 @@ Notes to the characteristics:
 #define DAC_I2S_SET_FREQUENCY_MIN_WORD_SELLECT_INPUT 0x31
 #define DAC_I2S_SET_NORMAL_FREQUENCY_BIT_CLOCK_INPUT 0x32
 
+
+/*Digital input pins of the digital-to-analog converter*/
+#define IO_MCU_BCK OUTPUT
+#define IO_MCU_WS OUTPUT
+#define IO_MCU_DATA OUTPUT
+
 uint16_t PROCESS_DAC_I2S_BCK;
 uint16_t PROCESS_DAC_I2S_WS;
 uint16_t PROCESS_DAC_I2S_DATA;
 
-uint8_t x = 0x0000;
-uint8_t max = 10000;
-uint8_t min = 1000;
 
-class DAC_I2S
+class TDA1543A
 {
  public:
-DAC_I2S(uint16_t BCK, uint16_t WS, uint16_t DATA){
+TDA1543A(uint16_t BCK, uint16_t WS, uint16_t DATA){
 PROCESS_DAC_I2S_BCK = BCK;
 PROCESS_DAC_I2S_WS = WS;
 PROCESS_DAC_I2S_DATA = DATA;
- pinMode(PROCESS_DAC_I2S_BCK, IO_DAC_I2S_BCK); //
- pinMode(PROCESS_DAC_I2S_WS, IO_DAC_I2S_WS); //
- pinMode(PROCESS_DAC_I2S_DATA, IO_DAC_I2S_DATA); //
+ pinMode(PROCESS_DAC_I2S_BCK, IO_MCU_BCK); //
+ pinMode(PROCESS_DAC_I2S_WS, IO_MCU_WS); //
+ pinMode(PROCESS_DAC_I2S_DATA, IO_MCU_DATA); //
 }; //
-DAC_I2S(uint16_t DAC_I2S_MOSI, uint16_t DAC_I2S_MISO, uint16_t DAC_I2S_SS, uint16_t DAC_I2S_SCK); //
-
-void begin(uint8_t x){
+void begin(){
 }; //
 void end(){
 }; //
 void init(){
 }; //This function initializes signals of the digital-to-analog converter
-void convert(){
+void convert(void){
 }; //
 void maxVolume(){
 }; //
@@ -100,27 +93,17 @@ void rightChannel(){
 }; //
 void setDataMode(){
 }; //
-void setFrequMax(uint8_t max){
+void setFrequMax(){
 }; //
-void setFrequMin(uint8_t min){
+void setFrequMin(){
 }; //
-void normalFrequ(bool FREQU){
+void normalFrequ(){
 }; //
-word transmittingData(uint8_t DAC_I2S_DATA){
-};
 
  private:
- //
-uint16_t DAC_I2S_BCK; //
-uint16_t DAC_I2S_WS; //
-uint16_t DAC_I2S_DATA; //
- 
- volatile bool DAC; //
-bool DAC_BUFFER_A; //
-void balance(); //
-void setFrequencyClock(); //This function sets clock frequencies
-void setFrequencyWord(); //This function sets frequencies in the word select input
-void setWordSelect(); //This function sets the word select input pin which connects to the microcontroller or microprocessor
+uint16_t _DAC_I2S_BCK; //
+uint16_t _DAC_I2S_WS; //
+uint16_t _DAC_I2S_DATA; //
 
  protected:
 
