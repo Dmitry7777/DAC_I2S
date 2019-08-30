@@ -63,6 +63,13 @@ uint16_t PROCESS_DAC_I2S_BCK;
 uint16_t PROCESS_DAC_I2S_WS;
 uint16_t PROCESS_DAC_I2S_DATA;
 
+
+
+
+class TDA1543A{
+
+static TDA1543A *SYS_Instance;
+
 int _Busy;
 int _CycleState;
 int _StepState;
@@ -202,12 +209,26 @@ int PerformSetup(){
     digitalWrite(PROCESS_DAC_I2S_WS, LOW); //
 
   };
+  _StepState ++;
+  return 1;
 }
 
-
-class TDA1543A{
-
-static TDA1543A *SYS_Instance;
+int PerformCycle(){
+switch(_CycleState){
+  case 0:
+  digitalWrite(PROCESS_DAC_I2S_BCK, LOW); //
+  _CycleState = PerformSetup();
+  break;
+  case 1:
+  digitalWrite(PROCESS_DAC_I2S_BCK, HIGH); //
+  _CycleState = 0; //
+  break;
+  default:
+  return 0;
+  break;
+};
+return 1;
+};
 
  public:
 TDA1543A(uint16_t BCK, uint16_t WS, uint16_t DATA){
@@ -245,6 +266,19 @@ void setFrequMin(){
 }; //
 void normalFrequ(){
 }; //
+int CommunicationLoop(){
+  
+}
+void StartAnalogWrite(int LeftChannelValueEnable, int RightChannelValueEnable){
+  _Busy = 1; //
+  LeftChannelValue = LeftChannelValueEnable; //
+  RightChannelValue = RightChannelValueEnable; //
+  _CycleState = 0; //
+  _StepState = 0; //
+}
+int IsBusy(){
+  return _Busy; //
+}
 
  private:
 uint16_t _DAC_I2S_BCK; //
